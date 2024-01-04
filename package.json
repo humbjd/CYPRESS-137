@@ -1,0 +1,19 @@
+{
+  "name": "CYPRESS-137",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.1",
+    "eslint-plugin-cypress": "^2.15.1"
+  },
+  "dependencies": {
+    "eslint": "^8.55.0"
+  }
+}
