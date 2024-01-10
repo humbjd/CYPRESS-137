@@ -1,0 +1,115 @@
+describe('paginação de QAs', () => {
+    
+    const URL = '/perfis'
+    const ROTA_API = '/api/profile'
+    const NAVEGACAO = '.paginationBttns li'
+
+    it('valida a paginação com 7 perfis', () => {
+
+        // fazer o spy na API de perfis
+        cy.intercept('GET', ROTA_API, { fixture: 'paginacao_7_usuarios' })
+            
+        // visitar a página
+        cy.visit(URL)
+
+        // valida se a paginação não existe
+        cy.get(NAVEGACAO)
+            .should('not.exist')
+    })
+
+    ;[
+        { fixture: 'paginacao_8_usuarios', resultadoEsperado: ['<', '1', '2', '>'] },
+        { fixture: 'paginacao_63_usuarios', resultadoEsperado: ['<', '1', '2', '3', '4', '5', '6', '7', '8', '9','>'] },
+        { fixture: 'paginacao_64_usuarios', resultadoEsperado: ['<', '1', '2', '3', '4', '5', '6', '...', '8', '9', '10','>'] }
+    ].forEach(({ fixture, resultadoEsperado }) => {
+
+        it(`valida a ${fixture}`, () => {
+            // fazer o spy na API de perfis
+        cy.intercept('GET', ROTA_API, { fixture })
+
+        // visitar a página
+        cy.visit(URL)
+
+        // valida a paginação
+        cy.get(NAVEGACAO)
+            .each((elemento, index) => {
+                   
+                cy.wrap(elemento)
+                    .should('have.text', resultadoEsperado[index])
+            })        
+        })
+    })
+    
+    it('valida a paginação com 8 perfis', () => {
+
+        const resultadoEsperado = ['<', '1', '2', '>']
+        
+        // fazer o spy na API de perfis
+        cy.intercept('GET', ROTA_API, { fixture: 'paginacao_8_usuarios' })
+
+        // visitar a página
+        cy.visit(URL)
+
+        // valida a paginação
+        cy.get(NAVEGACAO)
+            .each((elemento, index) => {
+                   
+                cy.wrap(elemento)
+                    .should('have.text', resultadoEsperado[index]) 
+                
+                /* exemplo como fazer
+                if (index === 0)
+                    cy.wrap(elemento)
+                        .should('have.text','<')
+                else if (index === 1)
+                    cy.wrap(elemento)
+                        .should('have.text','1')
+                else if (index === 2)
+                    cy.wrap(elemento)
+                        .should('have.text','2')
+                else if (index === 3)
+                    cy.wrap(elemento)
+                        .should('have.text','>')
+                */
+                
+            })
+
+        // valida a paginação
+        /*
+        cy.get('.paginationBttns li')
+            .eq(0)
+            .should('have.text', '<')
+
+        cy.get('.paginationBttns li')
+            .eq(0)
+            .should('have.text', '1') 
+            
+        cy.get('.paginationBttns li')
+            .eq(0)
+            .should('have.text', '2')
+
+        cy.get('.paginationBttns li')
+            .eq(0)
+            .should('have.text', '3')
+        */
+
+        
+    })
+
+    it('valida a paginação de 63 perfis', () => {
+        const resultadoEsperado = ['<', '1', '2', '3', '4', '5', '6', '7', '8', '9','>']
+        
+        // fazer o spy na API de perfis
+        cy.intercept('GET', ROTA_API, { fixture: 'paginacao_63_usuarios' })
+
+        // visitar a página
+        cy.visit(URL)
+
+        cy.get(NAVEGACAO)
+            .each((elemento, index) => {
+                   
+                cy.wrap(elemento)
+                    .should('have.text', resultadoEsperado[index])
+            })
+    })
+})
