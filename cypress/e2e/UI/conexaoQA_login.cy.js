@@ -7,7 +7,7 @@ describe.only('página de login', () => {
     beforeEach(() => {
         cy.visit('/login')
     })
-    it('faz um login válido', () => {
+    it('faz um login válido', { tags: ['smoke', 'login'] }, () => {
         
         // spy na api de login
         cy.intercept('GET', '/api/profile/me')
@@ -36,7 +36,7 @@ describe.only('página de login', () => {
                 .and('contain', 'HUMBERTO JOSE DANTAS')
     })
 
-    it('faz um login inválido', () => {
+    it('faz um login inválido', { tags: '@smoke' },  () => {
         
         // spy na api de login
         cy.intercept('POST', '/api/auth')
@@ -65,7 +65,7 @@ describe.only('página de login', () => {
             .should('have.text', 'Credenciais inválidas')
     })
 
-    it('valida a digitação de um email inválido', () => {
+    it('valida a digitação de um email inválido', { tags: ['smoke', 'login'] }, () => {
         
         // preencher o email (inválido)
         cy.getElement(CAMPO_EMAIL)
