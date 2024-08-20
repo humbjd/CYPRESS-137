@@ -1,29 +1,94 @@
-README
-Repositório referente ao Curso de Automação de Testes com Cypress oferecido pela Iterasys
-O Curso de Automação de Testes com Cypress abrange os seguintes tópicos:
 
-Introdução ao Cypress: Uma visão geral da ferramenta Cypress, suas vantagens e como ela se destaca na automação de testes.
 
-Configuração do Ambiente: Instruções passo a passo sobre como configurar seu ambiente de desenvolvimento para trabalhar efetivamente com o Cypress.
+# CYPRESS-137
 
-Estrutura de Projeto: Organização eficiente do seu projeto Cypress para garantir manutenção fácil e escalabilidade.
+**Autor:** Humberto José Dantas (humbjd)  
+**Projeto:** Automação Web e API  
+**Tecnologias:** Cypress, JavaScript, Node.js
 
-Escrita de Testes: Aprenda a criar testes poderosos e confiáveis usando a sintaxe amigável do Cypress.
+## Descrição
 
-Execução de Testes: Como executar seus testes de forma eficiente, tanto WEB como APIs gerar relatórios e interpretar os resultados.
+O projeto **CYPRESS-137** é focado na automação de testes para aplicações web e APIs utilizando o framework Cypress. O objetivo é garantir a qualidade e a integridade de aplicações através de testes automatizados, cobrindo cenários críticos e fluxos de usuário tanto na interface web quanto nas interações com APIs.
 
-Pré-requisitos
-Conhecimentos em Lógica de programação e JavaScript são bem vindos
+## Estrutura do Projeto
 
-Como Começar
-Clone este repositório para sua máquina local:
+- **/cypress**: Contém os testes automatizados.
+  - **/integration**: Testes de interface e API.
+  - **/fixtures**: Arquivos de dados para testes.
+  - **/support**: Configurações adicionais e comandos customizados.
+- **cypress.json**: Configurações do Cypress.
+- **package.json**: Dependências e scripts do projeto.
 
-https://github.com/humbjd/cypress137.git
-Siga as instruções de instalação e configuração fornecidas no material do curso.
+## Pré-requisitos
 
-Explore os diferentes módulos e inicie sua jornada de aprendizado!
+- **Node.js** (versão 12 ou superior)
+- **npm** (versão 6 ou superior) ou **yarn**
+- **Cypress** (instalado via npm/yarn)
 
-Recursos Adicionais
-Site oficial do Cypress
-Documentação do Cypress
-Comunidade Cypress
+## Instalação
+
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/humbjd/CYPRESS-137.git
+   ```
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd CYPRESS-137
+   ```
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+   ou
+   ```bash
+   yarn install
+   ```
+
+## Executando os Testes
+
+### Testes Web
+
+Para executar os testes de interface web:
+```bash
+npx cypress run
+```
+
+### Testes de API
+
+Para executar os testes de API:
+```bash
+npx cypress run --spec "cypress/integration/api/*.spec.js"
+```
+
+### Modo Interativo
+
+Para executar os testes em modo interativo:
+```bash
+npx cypress open
+```
+
+## Contribuição
+
+Se você deseja contribuir com o projeto, siga os passos abaixo:
+
+1. Faça um fork deste repositório.
+2. Crie uma nova branch:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Faça suas alterações e commit:
+   ```bash
+   git commit -m "Adiciona nova feature"
+   ```
+4. Envie para sua branch:
+   ```bash
+   git push origin minha-feature
+   ```
+5. Abra um Pull Request.
+
+## Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+
+
